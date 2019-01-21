@@ -15,7 +15,7 @@ ext {
     //以下三项均是必配项
     publishedGroupId = 'com.nsky.core'
     artifact = 'core'
-    libraryVersion = '1.0.0'
+    libraryVersion = lib_version_name
 
     //以下三项只是对开源库的描述（应该不是必配项吧，没尝试过）
     libraryName = 'core'
