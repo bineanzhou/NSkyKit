@@ -1,0 +1,56 @@
+apply plugin: 'com.android.library'
+
+apply plugin: 'kotlin-android'
+
+apply plugin: 'kotlin-android-extensions'
+
+android {
+    compileSdkVersion compile_sdk_version
+    defaultConfig {
+        minSdkVersion min_sdk_version
+        targetSdkVersion target_sdk_version
+        versionCode version_code
+        versionName version_name
+
+//        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+
+
+}
+
+//tasks.withType(Javadoc) {
+////        options.addStringOption('Xdoclint:none', '-quiet')
+//    options.addStringOption('Xdoclint:none', 'true')
+//    options.addStringOption('encoding', 'UTF-8')
+//    options.addStringOption('charSet', 'UTF-8')
+//}
+tasks.withType(Javadoc).all {
+    enabled = false
+}
+
+dependencies {
+    api fileTree(dir: 'libs', include: ['*.jar'])
+    api "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    api "com.android.support:appcompat-v7:$support_version"
+    api "com.android.support:support-v4:$support_version"
+    api "com.android.support:appcompat-v7:$support_version"
+    api "com.orhanobut:logger:$logger_version"
+
+}
+repositories {
+    mavenCentral()
+}
+
+//切记：以下代码必须放在 build.gradle 文件末尾
+apply from: 'bintray-config.gradle'
+apply from: 'https://raw.githubusercontent.com/nuuneoi/JCenter/master/installv1.gradle'
+apply from: 'https://raw.githubusercontent.com/nuuneoi/JCenter/master/bintrayv1.gradle'
