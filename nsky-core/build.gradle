@@ -40,12 +40,12 @@ tasks.withType(Javadoc).all {
 }
 
 dependencies {
-    api fileTree(dir: 'libs', include: ['*.jar'])
-    api "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
-    api "com.android.support:appcompat-v7:$support_version"
-    api "com.android.support:support-v4:$support_version"
-    api "com.orhanobut:logger:$logger_version"
-    api "com.facebook.stetho:stetho:$stetho_version"
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    implementation "com.android.support:appcompat-v7:$support_version"
+    implementation "com.android.support:support-v4:$support_version"
+    implementation "com.orhanobut:logger:$logger_version"
+    implementation "com.facebook.stetho:stetho:$stetho_version"
 
 }
 //repositories {
