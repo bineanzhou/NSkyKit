@@ -1,6 +1,5 @@
 # NSky 
 [ ![Download](https://api.bintray.com/packages/bineanzhou/maven/com.nsky.box%3Acore/images/download.svg?version=1.0.1) ](https://bintray.com/bineanzhou/maven/com.nsky.box%3Acore/1.0.1/link)
-## NSkyApp
 
 ## 使用教程
 
@@ -25,11 +24,16 @@ dependencies {
 ```
 ### 使用方法:
 在Application中初始化           
-```java
-public class MyApplication extends Application {
-  public void onCreate() {
-    super.onCreate();
-    CoreAppExt.onCreate(this, true);
-  }
+```kotlin
+class MyApplication:Application(){
+    override fun onCreate() {
+        super.onCreate()
+        CoreAppExt.onCreate(this, true)
+    }
+
+    override fun attachBaseContext(base: Context?) {
+        super.attachBaseContext(base)
+        CoreAppExt.attachBaseContext(base)
+    }
 }
 ```

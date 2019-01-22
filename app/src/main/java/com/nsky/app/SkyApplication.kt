@@ -17,6 +17,4 @@ class SkyApplication:Application(){
         super.attachBaseContext(base)
         CoreAppExt.attachBaseContext(base)
     }
-
-
 }
