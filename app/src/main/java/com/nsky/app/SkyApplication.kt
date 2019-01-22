@@ -11,7 +11,6 @@ class SkyApplication:Application(){
     override fun onCreate() {
         super.onCreate()
         CoreAppExt.onCreate(this, true)
-
     }
 
     override fun attachBaseContext(base: Context?) {

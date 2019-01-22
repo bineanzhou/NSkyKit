@@ -48,9 +48,9 @@ dependencies {
     api "com.orhanobut:logger:$logger_version"
 
 }
-repositories {
-    mavenCentral()
-}
+//repositories {
+//    mavenCentral()
+//}
 
 //切记：以下代码必须放在 build.gradle 文件末尾
 apply from: 'config-bintray.gradle'

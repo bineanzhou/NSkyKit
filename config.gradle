@@ -23,18 +23,22 @@ def addRepos(RepositoryHandler handler) {
         dirs '../aar'
     }
 
-    handler.google()
+    handler.maven{
+        url "https://dl.bintray.com/bineanzhou/maven"
+    }
     handler.jcenter()
-
-    handler.maven { url 'http://maven.aliyun.com/nexus/content/groups/public/' }
-
-    handler.maven { url "https://dl.google.com/dl/android/maven2/" }
-    handler.maven { url 'http://maven.corp.mediav.com/nexus/content/repositories/releases/' }
+    handler.google()
+//
+//
+//    handler.maven { url 'http://maven.aliyun.com/nexus/content/groups/public/' }
+//
+//    handler.maven { url "https://dl.google.com/dl/android/maven2/" }
+//    handler.maven { url 'http://maven.corp.mediav.com/nexus/content/repositories/releases/' }
 
 
 //    handler.mavenCentral()
     //Add the JitPack repository
-    handler.maven { url "https://jitpack.io" }
+//    handler.maven { url "https://jitpack.io" }
 
 }
 
