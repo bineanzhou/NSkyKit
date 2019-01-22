@@ -5,23 +5,31 @@
 ## 使用教程
 
 > Step 1.先在 build.gradle(Project:XXXX) 的 repositories 添加:
-
-	allprojects {
-		repositories {
-			...
-			maven { url "https://dl.bintray.com/bineanzhou/maven" }
-			
-		}
+```
+allprojects {
+	repositories {
+		...
+		maven { url "https://dl.bintray.com/bineanzhou/maven" }
+		
 	}
+}
+```
 > Step 2. 然后在 build.gradle(Module:app) 的 dependencies 添加:
-
-   	dependencies {
-   	       //基础工具库
-           implementation 'com.nsky.box:nsky-core:+'
-           //日志
-           implementation "com.orhanobut:logger:$logger_version"
-   	}
-   
-       使用方法:
-           在Application中初始化
-           CoreAppExt.onCreate(this, true)
+```
+dependencies {
+       //基础工具库
+       implementation 'com.nsky.box:nsky-core:+'
+       //日志
+       implementation "com.orhanobut:logger:$logger_version"
+}
+```
+### 使用方法:
+在Application中初始化           
+```java
+public class MyApplication extends Application {
+  public void onCreate() {
+    super.onCreate();
+    CoreAppExt.onCreate(this, true);
+  }
+}
+```
