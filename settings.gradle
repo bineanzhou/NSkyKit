@@ -1,1 +1,1 @@
-include ':app', ':nsky-core', ':nsky-okhttp'
+include ':app', ':nsky-core', ':nsky-okhttp', ':nsky-ui'
