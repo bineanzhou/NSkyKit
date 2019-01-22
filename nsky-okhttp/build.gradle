@@ -29,12 +29,6 @@ android {
 
 }
 
-//tasks.withType(Javadoc) {
-////        options.addStringOption('Xdoclint:none', '-quiet')
-//    options.addStringOption('Xdoclint:none', 'true')
-//    options.addStringOption('encoding', 'UTF-8')
-//    options.addStringOption('charSet', 'UTF-8')
-//}
 tasks.withType(Javadoc).all {
     enabled = false
 }
@@ -42,10 +36,7 @@ tasks.withType(Javadoc).all {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
-    implementation "com.android.support:appcompat-v7:$support_version"
-    implementation "com.android.support:support-v4:$support_version"
-    implementation "com.orhanobut:logger:$logger_version"
-    implementation "com.facebook.stetho:stetho:$stetho_version"
+    implementation 'com.squareup.okhttp3:okhttp:3.8.1'
 
 }
 
