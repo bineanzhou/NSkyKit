@@ -1,5 +1,5 @@
 # NSky 
-[ ![Download](https://api.bintray.com/packages/bineanzhou/maven/com.nsky.box%3Acore/images/download.svg?version=1.0.1) ](https://bintray.com/bineanzhou/maven/com.nsky.box%3Acore/1.0.1/link)
+[ ![Download](https://api.bintray.com/packages/bineanzhou/maven/com.nsky.box%3Acore/images/download.svg) ](https://bintray.com/bineanzhou/maven/com.nsky.box%3Acore/_latestVersion)
 
 ## 导入教程
 
@@ -39,3 +39,7 @@ class MyApplication:Application(){
 ```
 ## NSkyApp Demo介绍
 > ### 抓包
+```
+chrome://inspect
+```
+![stetho](https://github.com/bineanzhou/NSky/blob/master/doc/img/img1.png)
