@@ -1,0 +1,4 @@
+ext {
+    lib_version_code = 1
+    lib_version_name = "1.0.0"
+}

@@ -24,7 +24,7 @@ object CoreAppExt{
             AppManager.init(app, debug)
             setupLogger()
             Stetho.initializeWithDefaults(app)
-            Logger.d("$TAG onCreate")
+            Logger.i("$TAG onCreate")
         })
     }
 
