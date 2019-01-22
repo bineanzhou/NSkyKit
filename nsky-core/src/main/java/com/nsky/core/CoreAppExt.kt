@@ -2,6 +2,7 @@ package com.nsky.core
 
 import android.app.Application
 import android.content.Context
+import com.facebook.stetho.Stetho
 import com.nsky.core.util.AppManager
 import com.orhanobut.logger.AndroidLogAdapter
 import com.orhanobut.logger.Logger
@@ -16,11 +17,15 @@ import com.orhanobut.logger.FormatStrategy
  **/
 
 object CoreAppExt{
+    val TAG:String = CoreAppExt.javaClass.simpleName
 
     fun onCreate(app: Application?, debug: Boolean = false) {
-        AppManager.init(app, debug)
-        setupLogger()
-        Logger.d("onCreate")
+        ThreadManager.execute(Runnable {
+            AppManager.init(app, debug)
+            setupLogger()
+            Stetho.initializeWithDefaults(app)
+            Logger.d("$TAG onCreate")
+        })
     }
 
     private fun setupLogger(){
