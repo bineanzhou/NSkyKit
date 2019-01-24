@@ -1,4 +1,4 @@
-package com.nsky.kit.core
+package com.nsky.kit.arch
 
 import android.support.v7.app.AppCompatActivity
 

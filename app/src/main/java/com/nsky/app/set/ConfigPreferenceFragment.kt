@@ -1,12 +1,12 @@
-package com.nsky.app
+package com.nsky.app.set
 
 import android.annotation.TargetApi
 import android.content.Intent
 import android.os.Build
 import android.os.Bundle
-import android.preference.PreferenceFragment
 import android.support.v7.preference.PreferenceFragmentCompat
 import android.view.MenuItem
+import com.nsky.app.R
 
 /**
  * Created by zhoubin on 2019/1/16.
@@ -17,7 +17,7 @@ import android.view.MenuItem
  * activity is showing a two-pane settings UI.
  */
 @TargetApi(Build.VERSION_CODES.HONEYCOMB)
-class GeneralPreferenceFragment : PreferenceFragmentCompat() {
+class ConfigPreferenceFragment : PreferenceFragmentCompat() {
     /**
      * Called during [.onCreate] to supply the preferences for this fragment.
      * Subclasses are expected to call [.setPreferenceScreen] either

@@ -17,6 +17,11 @@ ext {
 
     logger_version = '2.2.0'
     stetho_version = '1.5.0'
+
+    // Architecture Components dependencies
+    archLifecycleVersion = "1.0.0"
+
+    gradlePluginVersion = '3.0.0'
 }
 
 def addRepos(RepositoryHandler handler) {

@@ -1,4 +1,4 @@
-package com.nsky.app
+package com.nsky.app.set
 
 import android.content.Context
 import android.content.res.Configuration
@@ -9,9 +9,13 @@ import android.preference.ListPreference
 import android.preference.PreferenceActivity
 import android.preference.PreferenceManager
 import android.preference.RingtonePreference
-import android.support.v7.app.AppCompatActivity
 import android.support.v7.preference.Preference
 import android.text.TextUtils
+import com.nsky.app.R
+import com.nsky.app.databinding.ActivityMainBinding
+import com.nsky.kit.arch.CoreActivity
+import com.nsky.kit.ext.addFragmentToActivity
+import com.nsky.kit.ext.bindingContentView
 
 /**
  * A [PreferenceActivity] that presents a set of application settings. On
@@ -23,20 +27,15 @@ import android.text.TextUtils
  * for design guidelines and the [Settings API Guide](http://developer.android.com/guide/topics/ui/settings.html)
  * for more information on developing a Settings UI.
  */
-class DebugActivity : AppCompatActivity() {
+class DebugActivity : CoreActivity() {
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-//        setupActionBar()
-        setContentView(R.layout.activity_main)
 
-        if (savedInstanceState == null) {
-            val preferenceFragment = GeneralPreferenceFragment()
-            val ft = supportFragmentManager.beginTransaction()
-            ft.add(R.id.pref_container, preferenceFragment)
-            ft.commit()
-        }
+        bindingContentView<ActivityMainBinding>(R.layout.activity_main)
+
+        addFragmentToActivity(R.id.pref_container, ConfigPreferenceFragment())
     }
 
 
@@ -46,33 +45,6 @@ class DebugActivity : AppCompatActivity() {
     private fun setupActionBar() {
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
     }
-
-    /**
-     * {@inheritDoc}
-     */
-//    override fun onIsMultiPane(): Boolean {
-//        return isXLargeTablet(this)
-//    }
-
-//    /**
-//     * {@inheritDoc}
-//     */
-//    @TargetApi(Build.VERSION_CODES.HONEYCOMB)
-//    override fun onBuildHeaders(target: List<PreferenceActivity.Header>) {
-//        loadHeadersFromResource(R.xml.pref_headers, target)
-//    }
-
-    /**
-     * This method stops fragment injection in malicious applications.
-     * Make sure to deny any unknown fragments here.
-     */
-//    override fun isValidFragment(fragmentName: String): Boolean {
-//        return PreferenceFragment::class.java.name == fragmentName
-//                || GeneralPreferenceFragment::class.java.name == fragmentName
-//                || DataSyncPreferenceFragment::class.java.name == fragmentName
-//                || NotificationPreferenceFragment::class.java.name == fragmentName
-//    }
-
 
 
 
@@ -147,9 +119,10 @@ class DebugActivity : AppCompatActivity() {
 
          * @see .sBindPreferenceSummaryToValueListener
          */
-        open fun bindPreferenceSummaryToValue(preference: Preference) {
+        fun bindPreferenceSummaryToValue(preference: Preference) {
             // Set the listener to watch for value changes.
-            preference.onPreferenceChangeListener = sBindPreferenceSummaryToValueListener
+            preference.onPreferenceChangeListener =
+                    sBindPreferenceSummaryToValueListener
 
             // Trigger the listener immediately with the preference's
             // current value.
