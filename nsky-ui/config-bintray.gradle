@@ -7,19 +7,19 @@ ext {
     //bintray 网站上你创建的仓库的名字（必配项）
     bintrayRepo = 'maven'
     //在这个仓库下的 package name（必配项）
-    bintrayName = 'com.nsky.box:ui'
+    bintrayName = 'com.nsky.kit:ui'
     //以上两项均只是指向 bintray 网站上你的仓库和仓库下的package
 
     //publishedGroupId:artifact:libraryVersion 构成你开源库的唯一路径
-    //例如：com.nsky.box:nsky-core:0.0.1，在build.gradle里就可以根据这个路径来compile依赖库了
+    //例如：com.nsky.kit:nsky-core:0.0.1，在build.gradle里就可以根据这个路径来compile依赖库了
     //以下三项均是必配项
-    publishedGroupId = 'com.nsky.box'
+    publishedGroupId = 'com.nsky.kit'
     artifact = 'nsky-ui'
     libraryVersion = lib_version_name
 
     //以下三项只是对开源库的描述（应该不是必配项吧，没尝试过）
-    libraryName = 'com.nsky.box:ui'
-    libraryDescription = 'con.nsky.box:ui'
+    libraryName = 'com.nsky.kit:ui'
+    libraryDescription = 'com.nsky.kit:ui'
     siteUrl = 'https://github.com/bineanzhou/NSky'
 
     //开源库对应的 github 地址，不知道可不可以不配，应该也是必配

@@ -1,4 +1,4 @@
-package com.nsky.core.util;
+package com.nsky.kit.core.util;
 
 
 import android.app.Activity;

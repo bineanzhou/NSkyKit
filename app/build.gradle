@@ -30,9 +30,9 @@ dependencies {
     implementation "com.android.support:preference-v7:$support_version"
     implementation "com.android.support:preference-v14:$support_version"
 
-    //com.nsky.box:nsky-core
-//    implementation 'com.nsky.box:nsky-core:+'
-//    implementation 'com.nsky.box:nsky-core:1.0.2'
+    //com.nsky.kit:nsky-core
+//    implementation 'com.nsky.kit:nsky-core:+'
+//    implementation 'com.nsky.kit:nsky-core:1.0.2'
         implementation project(':nsky-core')
     implementation "com.orhanobut:logger:$logger_version"
     implementation "com.facebook.stetho:stetho:$stetho_version"

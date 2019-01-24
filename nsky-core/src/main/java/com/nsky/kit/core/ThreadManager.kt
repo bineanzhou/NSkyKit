@@ -1,4 +1,4 @@
-package com.nsky.core
+package com.nsky.kit.core
 
 import java.util.concurrent.ExecutorService
 import java.util.concurrent.Executors

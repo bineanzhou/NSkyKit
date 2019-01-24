@@ -1,15 +1,12 @@
-package com.nsky.core
+package com.nsky.kit.core
 
 import android.app.Application
 import android.content.Context
 import com.facebook.stetho.Stetho
-import com.nsky.core.util.AppManager
+import com.nsky.kit.core.util.AppManager
 import com.orhanobut.logger.AndroidLogAdapter
 import com.orhanobut.logger.Logger
 import com.orhanobut.logger.PrettyFormatStrategy
-import com.orhanobut.logger.FormatStrategy
-
-
 
 
 /**

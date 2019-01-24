@@ -2,7 +2,7 @@ package com.nsky.app
 
 import android.app.Application
 import android.content.Context
-import com.nsky.core.CoreAppExt
+import com.nsky.kit.core.CoreAppExt
 
 /**
  * Created by zhoubin on 2019/1/17.

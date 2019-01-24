@@ -1,4 +1,4 @@
 ext {
-    lib_version_code = 4
-    lib_version_name = "1.0.3"
+    lib_version_code = 1
+    lib_version_name = "1.0.0"
 }

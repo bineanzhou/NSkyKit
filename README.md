@@ -1,5 +1,5 @@
 # NSky 
-[ ![Download](https://api.bintray.com/packages/bineanzhou/maven/com.nsky.box%3Acore/images/download.svg) ](https://bintray.com/bineanzhou/maven/com.nsky.box%3Acore/_latestVersion)
+[ ![Download](https://api.bintray.com/packages/bineanzhou/maven/com.nsky.kit%3Acore/images/download.svg) ](https://bintray.com/bineanzhou/maven/com.nsky.kit%3Acore/_latestVersion)
 
 ## 导入教程
 
@@ -17,7 +17,7 @@ allprojects {
 ```
 dependencies {
        //核心基础库
-       implementation 'com.nsky.box:nsky-core:+'
+       implementation 'com.nsky.kit:nsky-core:+'
        //日志
        implementation "com.orhanobut:logger:$logger_version"
 }
