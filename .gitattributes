@@ -1,0 +1,2 @@
+*.kt linguist-language=kotlin
+*.java linguist-language=kotlin

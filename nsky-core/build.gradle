@@ -47,9 +47,10 @@ dependencies {
     api "com.android.support:appcompat-v7:$support_version"
     api "com.android.support:support-v4:$support_version"
 
+    //arch
     api "android.arch.lifecycle:extensions:$rootProject.archLifecycleVersion"
     annotationProcessor "android.arch.lifecycle:compiler:$rootProject.archLifecycleVersion"
-    //mvvm
+    //databinding
     kapt "com.android.databinding:compiler:$gradlePluginVersion"
 
 
