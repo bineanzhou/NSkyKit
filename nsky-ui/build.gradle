@@ -52,5 +52,9 @@ dependencies {
 
 //切记：以下代码必须放在 build.gradle 文件末尾
 apply from: 'config-bintray.gradle'
-apply from: 'https://raw.githubusercontent.com/nuuneoi/JCenter/master/installv1.gradle'
-apply from: 'https://raw.githubusercontent.com/nuuneoi/JCenter/master/bintrayv1.gradle'
+
+apply from: '../nsky-core/bintray-installv1.gradle'
+apply from: '../nsky-core/bintray-v1.gradle'
+
+//apply from: 'https://raw.githubusercontent.com/nuuneoi/JCenter/master/installv1.gradle'
+//apply from: 'https://raw.githubusercontent.com/nuuneoi/JCenter/master/bintrayv1.gradle'

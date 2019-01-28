@@ -53,6 +53,10 @@ subprojects {
                     && !details.requested.name.contains('multidex')) {
                 details.useVersion support_version
             }
+            if (details.requested.group == 'android.arch.lifecycle'
+                    && !details.requested.name.contains('viewmodel')) {
+                details.useVersion archLifecycleVersion
+            }
         }
     }
 }

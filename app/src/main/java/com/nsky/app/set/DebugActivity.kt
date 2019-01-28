@@ -12,7 +12,7 @@ import android.preference.RingtonePreference
 import android.support.v7.preference.Preference
 import android.text.TextUtils
 import com.nsky.app.R
-import com.nsky.app.databinding.ActivityMainBinding
+import com.nsky.app.databinding.ActivityFragmentBinding
 import com.nsky.kit.arch.CoreActivity
 import com.nsky.kit.ext.addFragmentToActivity
 import com.nsky.kit.ext.bindingContentView
@@ -33,9 +33,9 @@ class DebugActivity : CoreActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        bindingContentView<ActivityMainBinding>(R.layout.activity_main)
+        bindingContentView<ActivityFragmentBinding>(R.layout.activity_fragment)
 
-        addFragmentToActivity(R.id.pref_container, ConfigPreferenceFragment())
+        addFragmentToActivity(R.id.fragment_container, ConfigPreferenceFragment())
     }
 
 

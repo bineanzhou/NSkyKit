@@ -12,7 +12,7 @@ import com.nsky.kit.ext.bind
 /**
  * Created by zhoubin on 2019/1/24.
  **/
-abstract class CoreFragment<T: ViewDataBinding>:Fragment(){
+abstract class CoreFragment<T : ViewDataBinding> : Fragment() {
     private var mContentView: View? = null
     lateinit var mViewDataBinding: T
 
@@ -22,15 +22,14 @@ abstract class CoreFragment<T: ViewDataBinding>:Fragment(){
 
     abstract fun onBindView(contentView: View?)
 
-    override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        if(mContentView == null)
-        {
+
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        if (mContentView == null) {
             inflater?.apply {
                 mViewDataBinding = bind<T>(inflater, layoutId = getLayoutId(), parent = container)
                 mContentView = mViewDataBinding.root
             }
-        }else
-        {
+        } else {
             // remove from parent avoiding "Cannot add a null child view to a ViewGroup"
             (mContentView?.parent as? ViewGroup)?.removeView(mContentView)
         }

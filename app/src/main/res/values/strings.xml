@@ -72,4 +72,13 @@
     <string name="pref_ringtone_silent">Silent</string>
 
     <string name="pref_title_vibrate">Vibrate</string>
+
+
+    <string name="bottom_nav_item_name">Item %1$d</string>
+    <string name="bottom_nav_page_home">主页</string>
+    <string name="bottom_nav_page_discover">发现</string>
+    <string name="bottom_nav_page_set">设置</string>
+    <string name="bottom_nav_page_4_name">Page 4</string>
+    <string name="bottom_nav_page_5_name">Page 5</string>
+
 </resources>
