@@ -1,11 +1,14 @@
 package com.nsky.kit.ext
 
 import android.annotation.SuppressLint
-import android.support.design.bottomnavigation.LabelVisibilityMode
 import android.support.design.internal.BottomNavigationItemView
 import android.support.design.internal.BottomNavigationMenuView
 import android.support.design.widget.BottomNavigationView
 import android.view.View
+import java.lang.reflect.AccessibleObject.setAccessible
+import java.lang.reflect.Array.setBoolean
+
+
 
 
 fun BottomNavigationView.resetBottomMenuView(size: Int) {
@@ -18,20 +21,48 @@ fun BottomNavigationView.resetBottomMenuView(size: Int) {
     }
 }
 
-//
-//@SuppressLint("RestrictedApi")
-//fun BottomNavigationView.resetShifting(shiftMode: Boolean = false) {
-//    //反射design包中的成员，不会因平台不同导致not found. 注意，只要menuitem数量变化，此值会被自动修改， 需重新调用。
-//    (getChildAt(0) as? BottomNavigationMenuView)?.applySafe {
-//        (0 until childCount).map { getChildAt(it) as BottomNavigationItemView }.forEach {
-//            it.apply {
+/**
+ *  <= API26
+ */
+
+@SuppressLint("RestrictedApi")
+fun BottomNavigationView.disableShiftMode() {
+    var shiftMode: Boolean = false
+    //反射design包中的成员，不会因平台不同导致not found. 注意，只要menuitem数量变化，此值会被自动修改， 需重新调用。
+    (getChildAt(0) as? BottomNavigationMenuView)?.applySafe {
+        (0 until childCount).map { getChildAt(it) as BottomNavigationItemView }.forEach {
+            it.apply {
 //                setShiftingMode(shiftMode)
-//                setChecked(itemData?.isChecked ?: false)
-//            }
+                setShifting(shiftMode)
+                setChecked(itemData?.isChecked ?: false)
+            }
+        }
+        BottomNavigationMenuView::class.java.getDeclaredField("mShiftingMode")?.apply {
+            isAccessible = true
+            set(this@applySafe, shiftMode)
+        }
+    }
+}
+
+
+//@SuppressLint("RestrictedApi")
+//fun disableShiftMode(navigationView: BottomNavigationView) {
+//    val menuView = navigationView.getChildAt(0) as BottomNavigationMenuView
+//    try {
+//        val shiftingMode = menuView.javaClass.getDeclaredField("mShiftingMode")
+//        shiftingMode.isAccessible = true
+//        shiftingMode.setBoolean(menuView, false)
+//        shiftingMode.isAccessible = false
+//
+//        for (i in 0 until menuView.childCount) {
+//            val itemView = menuView.getChildAt(i) as BottomNavigationItemView
+//            itemView.setShiftingMode(false)
+//            itemView.setChecked(itemView.itemData.isChecked)
 //        }
-//        BottomNavigationMenuView::class.java.getDeclaredField("mShiftingMode")?.apply {
-//            isAccessible = true
-//            set(this@applySafe, shiftMode)
-//        }
+//    } catch (e: NoSuchFieldException) {
+//        // Log
+//    } catch (e: IllegalAccessException) {
+//        // Log
 //    }
+//
 //}

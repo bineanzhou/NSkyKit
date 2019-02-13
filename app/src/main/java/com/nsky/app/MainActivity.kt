@@ -3,14 +3,22 @@ package com.nsky.app
 import android.os.Bundle
 import android.support.design.bottomnavigation.LabelVisibilityMode
 import android.util.TypedValue
+import com.nsky.app.dagger.DaggerMainComponent
+import com.nsky.app.dagger.MainPresenter
+import com.nsky.app.dagger.MainService
 import com.nsky.app.databinding.ActivityMainBinding
 import com.nsky.kit.arch.CoreActivity
 import com.nsky.kit.ext.bindingContentView
+import com.nsky.kit.ext.disableShiftMode
+import com.orhanobut.logger.Logger
+import javax.inject.Inject
 
 /**
  * Created by zhoubin on 2019/1/28.
  **/
 class MainActivity : CoreActivity() {
+    private val TAG:String? = MainActivity::class.java.simpleName
+
     enum class NavMenu(val pos: Int, val tag: String) {
         PAGE_HOME(0, "home"),
         PAGE_DISCOVER(1, "discover"),
@@ -29,14 +37,36 @@ class MainActivity : CoreActivity() {
         }
     }
 
+    @Inject
+    lateinit var mPresenter: MainPresenter
+
+    @Inject
+    lateinit var mMainService: MainService
+
+
     var mDataBingding: ActivityMainBinding? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         mDataBingding = bindingContentView(R.layout.activity_main)
         setNavigation()
+
+        initInjection()
+//        Toast.makeText(this, mPresenter.doSomething(), Toast.LENGTH_SHORT).show()
+        Logger.d("$TAG  MainPresenter ${mPresenter.doSomething()}")
+        Logger.d("$TAG  MainService ${mMainService.getMainInfo()}")
     }
 
+    /*
+    Dagger2注入注册
+ */
+    private fun initInjection() {
+        DaggerMainComponent.builder().build().inject(this)
+
+    }
     private fun setNavigation() {
+
+        //            navigation.disableShiftMode()
+
         val displayMetrics = resources.displayMetrics
         mDataBingding?.apply {
             navigation.labelVisibilityMode = LabelVisibilityMode.LABEL_VISIBILITY_LABELED
@@ -45,6 +75,10 @@ class MainActivity : CoreActivity() {
             ).toInt()
             navigation.itemTextAppearanceActive = R.style.BottomNavigationView_Text
             navigation.itemTextAppearanceInactive = R.style.BottomNavigationView_Text
+
+
+
+
             for (navItem in NavMenu.values()) {
                 when (navItem) {
                     NavMenu.PAGE_4, NavMenu.PAGE_5 -> {

@@ -25,7 +25,7 @@ abstract class CoreFragment<T : ViewDataBinding> : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         if (mContentView == null) {
-            inflater?.apply {
+            inflater.apply {
                 mViewDataBinding = bind<T>(inflater, layoutId = getLayoutId(), parent = container)
                 mContentView = mViewDataBinding.root
             }

@@ -1,8 +1,7 @@
 apply plugin: 'com.android.library'
-
 apply plugin: 'kotlin-android'
-
 apply plugin: 'kotlin-android-extensions'
+//apply plugin: 'kotlin-kapt'
 
 apply from: 'config-lib.gradle'
 
@@ -50,7 +49,7 @@ dependencies {
     api "com.android.support.constraint:constraint-layout:$constraint_version"
     //arch
     api "android.arch.lifecycle:extensions:$rootProject.archLifecycleVersion"
-    annotationProcessor "android.arch.lifecycle:compiler:$rootProject.archLifecycleVersion"
+    kapt "android.arch.lifecycle:compiler:$rootProject.archLifecycleVersion"
     //databinding
     kapt "com.android.databinding:compiler:$gradlePluginVersion"
 
