@@ -44,7 +44,8 @@ dependencies {
     //com.nsky.kit:nsky-core
 //    implementation 'com.nsky.kit:nsky-core:+'
 //    implementation 'com.nsky.kit:nsky-core:1.0.2'
-        implementation project(':nsky-core')
+    implementation project(':nsky-core')
+    implementation project(':nsky-ui')
     implementation "com.orhanobut:logger:$logger_version"
     implementation "com.facebook.stetho:stetho:$stetho_version"
 

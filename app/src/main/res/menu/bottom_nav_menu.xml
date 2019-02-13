@@ -25,7 +25,6 @@
       android:id="@+id/action_page_discover"
       android:enabled="true"
       android:icon="@drawable/ic_star_24"
-      android:visible="false"
       android:title="@string/bottom_nav_page_discover"/>
   <item
       android:id="@+id/action_page_set"

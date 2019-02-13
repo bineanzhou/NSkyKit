@@ -58,6 +58,10 @@ fun BottomNavigationView.setTextAppearance(@StyleRes textAppearanceResActive:Int
     itemTextAppearanceInactive = textAppearanceResInactive
 }
 
+fun BottomNavigationView.setMenuItemChecked(itemId: Int, isChecked:Boolean = true) {
+    menu.findItem(itemId)?.isChecked = isChecked
+}
+
 fun BottomNavigationView.hideMenuItem(pos:Int){
     if(pos>=0&&pos<menu.size())
     {

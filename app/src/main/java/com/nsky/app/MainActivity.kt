@@ -1,21 +1,29 @@
 package com.nsky.app
 
 import android.os.Bundle
-import android.support.design.bottomnavigation.LabelVisibilityMode
-import android.util.TypedValue
+import android.support.design.widget.BottomNavigationView
+import android.support.v4.app.Fragment
+import android.view.MenuItem
 import com.nsky.app.dagger.DaggerMainComponent
 import com.nsky.app.dagger.MainPresenter
 import com.nsky.app.dagger.MainService
 import com.nsky.app.databinding.ActivityMainBinding
+import com.nsky.app.set.ConfigPreferenceFragment
+import com.nsky.app.set.DataSyncPreferenceFragment
+import com.nsky.app.set.NotificationPreferenceFragment
 import com.nsky.kit.arch.CoreActivity
 import com.nsky.kit.ext.*
+import com.nsky.kit.ui.CoreFragmentPagerAdapter
 import com.orhanobut.logger.Logger
+import java.util.*
 import javax.inject.Inject
 
 /**
  * Created by zhoubin on 2019/1/28.
  **/
-class MainActivity : CoreActivity() {
+class MainActivity : CoreActivity(), BottomNavigationView.OnNavigationItemSelectedListener {
+
+
     private val TAG:String? = MainActivity::class.java.simpleName
 
     enum class NavMenu(val pos: Int, val tag: String) {
@@ -44,11 +52,13 @@ class MainActivity : CoreActivity() {
 
 
     var mDataBingding: ActivityMainBinding? = null
+    private var mAdapter: CoreFragmentPagerAdapter? = null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         mDataBingding = bindingContentView(R.layout.activity_main)
-        setNavigation()
-
+        setUpNavigation()
+        setUpViewPager()
         initInjection()
 //        Toast.makeText(this, mPresenter.doSomething(), Toast.LENGTH_SHORT).show()
         Logger.d("$TAG  MainPresenter ${mPresenter.doSomething()}")
@@ -62,7 +72,7 @@ class MainActivity : CoreActivity() {
         DaggerMainComponent.builder().build().inject(this)
 
     }
-    private fun setNavigation() {
+    private fun setUpNavigation() {
 
         //            navigation.disableShiftMode()
 
@@ -81,7 +91,60 @@ class MainActivity : CoreActivity() {
                 }
 
             }
+            navigation.setOnNavigationItemSelectedListener(this@MainActivity)
+            navigation.selectedItemId = R.id.action_page_home
 
         }
     }
+
+    private fun selectNavMenuItem(navMenu:NavMenu){
+        mDataBingding?.apply {
+            containerPager.currentItem = navMenu.pos
+        }
+    }
+    override fun onNavigationItemSelected(menuItem: MenuItem): Boolean {
+        mDataBingding?.apply {
+            navigation.setMenuItemChecked(menuItem.itemId, true)
+        }
+        when(menuItem.itemId)
+        {
+            R.id.action_page_home ->{
+                selectNavMenuItem(NavMenu.PAGE_HOME)
+            }
+            R.id.action_page_discover ->{
+                selectNavMenuItem(NavMenu.PAGE_DISCOVER)
+            }
+            R.id.action_page_set ->{
+                selectNavMenuItem(NavMenu.PAGE_SET)
+            }
+            else ->{
+                selectNavMenuItem(NavMenu.PAGE_HOME)
+            }
+        }
+        return false
+    }
+
+    private fun allFragment(): List<Fragment> {
+        val fragmentList = ArrayList<Fragment>()
+        var fragment: Fragment?
+
+        fragment = ConfigPreferenceFragment()
+        fragmentList.add(fragment)
+
+        fragment = DataSyncPreferenceFragment()
+        fragmentList.add(fragment)
+
+        fragment = NotificationPreferenceFragment()
+        fragmentList.add(fragment)
+        return fragmentList
+    }
+    private fun setUpViewPager() {
+        mDataBingding?.apply {
+            var fragments = allFragment()
+            mAdapter = CoreFragmentPagerAdapter(supportFragmentManager, fragments)
+//            containerPager.setPagerEnabled(false)
+            containerPager?.adapter = mAdapter
+        }
+    }
+
 }
