@@ -1,9 +1,12 @@
 package com.nsky.kit.ext
 
 import android.annotation.SuppressLint
+import android.support.annotation.StyleRes
+import android.support.design.bottomnavigation.LabelVisibilityMode
 import android.support.design.internal.BottomNavigationItemView
 import android.support.design.internal.BottomNavigationMenuView
 import android.support.design.widget.BottomNavigationView
+import android.util.TypedValue
 import android.view.View
 import java.lang.reflect.AccessibleObject.setAccessible
 import java.lang.reflect.Array.setBoolean
@@ -44,7 +47,29 @@ fun BottomNavigationView.disableShiftMode() {
     }
 }
 
+fun BottomNavigationView.setTextAppearance(@StyleRes textAppearanceResActive:Int,
+                                          @StyleRes textAppearanceResInactive:Int){
+    val displayMetrics = resources.displayMetrics
+    labelVisibilityMode = LabelVisibilityMode.LABEL_VISIBILITY_LABELED
+    itemIconSize = TypedValue.applyDimension(
+        TypedValue.COMPLEX_UNIT_DIP, 24f, displayMetrics
+    ).toInt()
+    itemTextAppearanceActive = textAppearanceResActive
+    itemTextAppearanceInactive = textAppearanceResInactive
+}
 
+fun BottomNavigationView.hideMenuItem(pos:Int){
+    if(pos>=0&&pos<menu.size())
+    {
+        menu.getItem(pos).isVisible = false
+    }
+}
+fun BottomNavigationView.showMenuItem(pos:Int){
+    if(pos>=0&&pos<menu.size())
+    {
+        menu.getItem(pos).isVisible = true
+    }
+}
 //@SuppressLint("RestrictedApi")
 //fun disableShiftMode(navigationView: BottomNavigationView) {
 //    val menuView = navigationView.getChildAt(0) as BottomNavigationMenuView

@@ -8,8 +8,7 @@ import com.nsky.app.dagger.MainPresenter
 import com.nsky.app.dagger.MainService
 import com.nsky.app.databinding.ActivityMainBinding
 import com.nsky.kit.arch.CoreActivity
-import com.nsky.kit.ext.bindingContentView
-import com.nsky.kit.ext.disableShiftMode
+import com.nsky.kit.ext.*
 import com.orhanobut.logger.Logger
 import javax.inject.Inject
 
@@ -67,26 +66,17 @@ class MainActivity : CoreActivity() {
 
         //            navigation.disableShiftMode()
 
-        val displayMetrics = resources.displayMetrics
         mDataBingding?.apply {
-            navigation.labelVisibilityMode = LabelVisibilityMode.LABEL_VISIBILITY_LABELED
-            navigation.itemIconSize = TypedValue.applyDimension(
-                TypedValue.COMPLEX_UNIT_DIP, 24f, displayMetrics
-            ).toInt()
-            navigation.itemTextAppearanceActive = R.style.BottomNavigationView_Text
-            navigation.itemTextAppearanceInactive = R.style.BottomNavigationView_Text
-
-
-
+            navigation.setTextAppearance(R.style.BottomNavigationView_Text, R.style.BottomNavigationView_Text)
 
             for (navItem in NavMenu.values()) {
                 when (navItem) {
                     NavMenu.PAGE_4, NavMenu.PAGE_5 -> {
-                        navigation.menu.getItem(navItem.pos).isVisible = false
+                        navigation.hideMenuItem(navItem.pos)
 
                     }
                     else -> {
-                        navigation.menu.getItem(navItem.pos).isVisible = true
+                        navigation.showMenuItem(navItem.pos)
                     }
                 }
 
