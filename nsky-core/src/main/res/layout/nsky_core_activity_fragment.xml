@@ -5,7 +5,7 @@
         <import type="android.view.View"/>
         <variable
                 name="viewmodel"
-                type="com.nsky.app.set.viewmodel.DebugViewModel"/>
+                type="com.nsky.kit.arch.viewmodel.FragmentContainerViewModel"/>
     </data>
     <RelativeLayout
             android:layout_width="match_parent"

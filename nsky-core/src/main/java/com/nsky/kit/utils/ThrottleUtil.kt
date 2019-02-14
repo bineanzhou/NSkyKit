@@ -6,10 +6,10 @@
  * Vestibulum commodo. Ut rhoncus gravida arcu.
  */
 
-package com.nsky.kit.util
+package com.nsky.kit.utils
 
 import android.util.LruCache
-import com.nsky.kit.util.ThrottleUtils.sThreadLocal
+import com.nsky.kit.utils.ThrottleUtils.sThreadLocal
 import com.orhanobut.logger.Logger
 import java.lang.Thread.currentThread
 

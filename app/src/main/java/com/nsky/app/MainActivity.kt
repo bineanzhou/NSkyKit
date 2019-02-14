@@ -4,13 +4,15 @@ import android.os.Bundle
 import android.support.design.widget.BottomNavigationView
 import android.support.v4.app.Fragment
 import android.view.MenuItem
+import com.nsky.app.catalog.CatalogFragment
 import com.nsky.app.dagger.DaggerMainComponent
 import com.nsky.app.dagger.MainPresenter
 import com.nsky.app.dagger.MainService
 import com.nsky.app.databinding.ActivityMainBinding
-import com.nsky.app.set.ConfigPreferenceFragment
-import com.nsky.app.set.DataSyncPreferenceFragment
-import com.nsky.app.set.NotificationPreferenceFragment
+import com.nsky.app.discover.DiscoverFragment
+import com.nsky.app.setting.ConfigPreFragment
+import com.nsky.app.setting.DataSyncPreferenceFragment
+import com.nsky.app.setting.SettingFragment
 import com.nsky.kit.arch.CoreActivity
 import com.nsky.kit.ext.*
 import com.nsky.kit.ui.CoreFragmentPagerAdapter
@@ -128,13 +130,13 @@ class MainActivity : CoreActivity(), BottomNavigationView.OnNavigationItemSelect
         val fragmentList = ArrayList<Fragment>()
         var fragment: Fragment?
 
-        fragment = ConfigPreferenceFragment()
+        fragment = CatalogFragment()
         fragmentList.add(fragment)
 
-        fragment = DataSyncPreferenceFragment()
+        fragment = DiscoverFragment()
         fragmentList.add(fragment)
 
-        fragment = NotificationPreferenceFragment()
+        fragment = SettingFragment()
         fragmentList.add(fragment)
         return fragmentList
     }

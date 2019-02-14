@@ -1,4 +1,4 @@
-package com.nsky.kit.util;
+package com.nsky.kit.utils;
 
 /**
  * Created by zhoubin on 2019/1/17.

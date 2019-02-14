@@ -13,7 +13,7 @@ import android.view.MotionEvent;
  */
 public class NoScrollViewPager extends ViewPager {
 
-    private boolean isPagingEnabled = true;
+    private boolean isPagingEnabled = false;
 
     public NoScrollViewPager(Context context) {
         super(context);

@@ -1,12 +1,12 @@
-package com.nsky.app.set
+package com.nsky.app.setting
 
-import android.annotation.TargetApi
 import android.content.Intent
-import android.os.Build
 import android.os.Bundle
 import android.support.v7.preference.PreferenceFragmentCompat
 import android.view.MenuItem
 import com.nsky.app.R
+import com.nsky.app.utils.PreferenceUtil
+import com.nsky.kit.arch.FragmentContainerActivity
 
 /**
  * Created by zhoubin on 2019/1/16.
@@ -16,8 +16,7 @@ import com.nsky.app.R
  * This fragment shows general preferences only. It is used when the
  * activity is showing a two-pane settings UI.
  */
-@TargetApi(Build.VERSION_CODES.HONEYCOMB)
-class ConfigPreferenceFragment : PreferenceFragmentCompat() {
+class ConfigPreFragment : PreferenceFragmentCompat() {
     /**
      * Called during [.onCreate] to supply the preferences for this fragment.
      * Subclasses are expected to call [.setPreferenceScreen] either
@@ -36,14 +35,14 @@ class ConfigPreferenceFragment : PreferenceFragmentCompat() {
         // to their values. When their values change, their summaries are
         // updated to reflect the new value, per the Android Design
         // guidelines.
-        DebugActivity.bindPreferenceSummaryToValue(findPreference("example_text"))
-        DebugActivity.bindPreferenceSummaryToValue(findPreference("example_list"))
+        PreferenceUtil.bindPreferenceSummaryToValue(findPreference("example_text"))
+        PreferenceUtil.bindPreferenceSummaryToValue(findPreference("example_list"))
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         val id = item.itemId
         if (id == android.R.id.home) {
-            startActivity(Intent(activity, DebugActivity::class.java))
+            startActivity(Intent(activity, FragmentContainerActivity::class.java))
             return true
         }
         return super.onOptionsItemSelected(item)
