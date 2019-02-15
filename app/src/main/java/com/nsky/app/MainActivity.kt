@@ -10,8 +10,6 @@ import com.nsky.app.dagger.MainPresenter
 import com.nsky.app.dagger.MainService
 import com.nsky.app.databinding.ActivityMainBinding
 import com.nsky.app.discover.DiscoverFragment
-import com.nsky.app.setting.ConfigPreFragment
-import com.nsky.app.setting.DataSyncPreferenceFragment
 import com.nsky.app.setting.SettingFragment
 import com.nsky.kit.arch.CoreActivity
 import com.nsky.kit.ext.*
