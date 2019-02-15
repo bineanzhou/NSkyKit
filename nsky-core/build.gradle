@@ -1,7 +1,7 @@
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
-//apply plugin: 'kotlin-kapt'
+apply plugin: 'kotlin-kapt'
 
 apply from: 'config-lib.gradle'
 
@@ -30,6 +30,9 @@ android {
 
 }
 
+kapt {
+    generateStubs = true
+}
 //tasks.withType(Javadoc) {
 ////        options.addStringOption('Xdoclint:none', '-quiet')
 //    options.addStringOption('Xdoclint:none', 'true')
@@ -39,6 +42,8 @@ android {
 tasks.withType(Javadoc).all {
     enabled = false
 }
+
+
 
 dependencies {
     api fileTree(dir: 'libs', include: ['*.jar'])
@@ -51,7 +56,7 @@ dependencies {
     api "android.arch.lifecycle:extensions:$rootProject.archLifecycleVersion"
     kapt "android.arch.lifecycle:compiler:$rootProject.archLifecycleVersion"
     //databinding
-    kapt "com.android.databinding:compiler:$gradlePluginVersion"
+//    kapt "com.android.databinding:compiler:$gradlePluginVersion" 3.2以后不需要 该lib
 
 
     api "com.orhanobut:logger:$logger_version"
