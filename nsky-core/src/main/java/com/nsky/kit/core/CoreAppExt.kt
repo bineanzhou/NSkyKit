@@ -4,6 +4,7 @@ import android.app.Application
 import android.content.Context
 import com.facebook.stetho.Stetho
 import com.nsky.kit.utils.AppManager
+import com.nsky.kit.utils.NSkyLog
 import com.orhanobut.logger.AndroidLogAdapter
 import com.orhanobut.logger.Logger
 import com.orhanobut.logger.PrettyFormatStrategy
@@ -21,7 +22,7 @@ object CoreAppExt{
             AppManager.init(app, debug)
             setupLogger()
             Stetho.initializeWithDefaults(app)
-            Logger.i("$TAG onCreate")
+            NSkyLog.i(TAG, "onCreate")
         })
     }
 

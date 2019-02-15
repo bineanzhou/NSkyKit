@@ -14,6 +14,7 @@ import com.nsky.app.setting.SettingFragment
 import com.nsky.kit.arch.CoreActivity
 import com.nsky.kit.ext.*
 import com.nsky.kit.ui.CoreFragmentPagerAdapter
+import com.nsky.kit.utils.NSkyLog
 import com.orhanobut.logger.Logger
 import java.util.*
 import javax.inject.Inject
@@ -61,8 +62,8 @@ class MainActivity : CoreActivity(), BottomNavigationView.OnNavigationItemSelect
         setUpViewPager()
         initInjection()
 //        Toast.makeText(this, mPresenter.doSomething(), Toast.LENGTH_SHORT).show()
-        Logger.d("$TAG  MainPresenter ${mPresenter.doSomething()}")
-        Logger.d("$TAG  MainService ${mMainService.getMainInfo()}")
+        NSkyLog.d(TAG, "MainPresenter ${mPresenter.doSomething()}")
+        NSkyLog.d(TAG , "MainService ${mMainService.getMainInfo()}")
     }
 
     /*
