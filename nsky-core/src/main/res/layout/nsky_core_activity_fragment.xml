@@ -10,9 +10,16 @@
     <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
+        <include layout="@layout/nsky_core_toolbar"
+                 android:layout_alignParentTop="true"
+                 android:layout_width="match_parent"
+                 android:layout_height="?attr/actionBarSize"
+                 android:id="@+id/nsky_toolbar"/>
         <FrameLayout
+                android:layout_below="@+id/nsky_toolbar"
                 android:id="@+id/fragment_container"
+                android:layout_alignParentBottom="true"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"/>
+                android:layout_height="wrap_content"/>
     </RelativeLayout>
 </layout>

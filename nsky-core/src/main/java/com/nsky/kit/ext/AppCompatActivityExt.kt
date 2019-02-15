@@ -31,6 +31,8 @@ import android.support.v4.app.FragmentManager
 import android.support.v4.app.FragmentTransaction
 import android.support.v7.app.ActionBar
 import android.support.v7.app.AppCompatActivity
+import android.support.v7.widget.Toolbar
+import com.nsky.core.R
 
 
 const val ADD_EDIT_RESULT_OK = Activity.RESULT_FIRST_USER + 1
@@ -51,13 +53,13 @@ fun AppCompatActivity.replaceFragmentInActivity(fragment: Fragment, frameId: Int
  * The `fragment` is added to the container view with tag. The operation is
  * performed by the `fragmentManager`.
  */
-fun AppCompatActivity.addFragmentToActivity(fragment: Fragment, tag: String?=null) {
+fun AppCompatActivity.addFragmentToActivity(fragment: Fragment, tag: String? = null) {
     supportFragmentManager.transact {
         add(fragment, tag)
     }
 }
 
-fun AppCompatActivity.addFragmentToActivity(@IdRes containerViewId: Int, fragment: Fragment){
+fun AppCompatActivity.addFragmentToActivity(@IdRes containerViewId: Int, fragment: Fragment) {
     supportFragmentManager.transact {
         add(containerViewId, fragment)
     }
@@ -71,12 +73,13 @@ fun AppCompatActivity.setupActionBar(@IdRes toolbarId: Int, action: ActionBar.()
 }
 
 fun <T : ViewDataBinding> AppCompatActivity.bindingContentView(@LayoutRes layoutId: Int): T {
-    return DataBindingUtil.setContentView(this, layoutId)
+    var dataBinding: T = DataBindingUtil.setContentView(this, layoutId)
+    return dataBinding
 }
 
 
 fun <T : ViewModel> AppCompatActivity.obtainViewModel(viewModelClass: Class<T>) =
-        ViewModelProviders.of(this).get(viewModelClass)
+    ViewModelProviders.of(this).get(viewModelClass)
 
 /**
  * Runs a FragmentTransaction, then calls commit().
