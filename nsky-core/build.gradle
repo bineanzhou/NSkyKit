@@ -30,9 +30,9 @@ android {
 
 }
 
-kapt {
-    generateStubs = true
-}
+//kapt {
+//    generateStubs = true
+//}
 //tasks.withType(Javadoc) {
 ////        options.addStringOption('Xdoclint:none', '-quiet')
 //    options.addStringOption('Xdoclint:none', 'true')
@@ -61,6 +61,13 @@ dependencies {
 
     api "com.orhanobut:logger:$logger_version"
     api "com.facebook.stetho:stetho:$stetho_version"
+
+    //dagger
+    implementation "com.google.dagger:dagger:$dagger_version"
+    kapt "com.google.dagger:dagger-compiler:$dagger_version"
+    implementation "com.google.dagger:dagger-android:$dagger_version"
+    kapt "com.google.dagger:dagger-android-processor:$dagger_version"
+    implementation "com.google.dagger:dagger-android-support:$dagger_version"
 
 }
 

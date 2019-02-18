@@ -3,9 +3,6 @@
     <data>
         <data>
             <import type="android.view.View"/>
-            <variable
-                    name="viewmodel"
-                    type="com.nsky.app.setting.viewmodel.SettingViewModel"/>
         </data>
 
     </data>
@@ -14,9 +11,6 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-        <Button android:layout_width="match_parent" android:layout_height="wrap_content"
-                android:id="@+id/btn_debug"
-                android:text="debug"/>
     </LinearLayout>
 
 </layout>

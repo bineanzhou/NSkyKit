@@ -4,26 +4,22 @@ import android.os.Bundle
 import android.support.design.widget.BottomNavigationView
 import android.support.v4.app.Fragment
 import android.view.MenuItem
-import com.nsky.app.catalog.CatalogFragment
-import com.nsky.app.dagger.DaggerMainComponent
-import com.nsky.app.dagger.MainPresenter
-import com.nsky.app.dagger.MainService
+import com.nsky.app.home.HomeFragment
 import com.nsky.app.databinding.ActivityMainBinding
 import com.nsky.app.discover.DiscoverFragment
 import com.nsky.app.setting.SettingFragment
-import com.nsky.kit.arch.CoreActivity
+import com.nsky.app.viewmodel.MainViewModel
+import com.nsky.kit.dagger.scope.CoreDaggerActivity
 import com.nsky.kit.ext.*
 import com.nsky.kit.ui.CoreFragmentPagerAdapter
 import com.nsky.kit.utils.NSkyLog
-import com.orhanobut.logger.Logger
 import java.util.*
 import javax.inject.Inject
 
 /**
  * Created by zhoubin on 2019/1/28.
  **/
-class MainActivity : CoreActivity(), BottomNavigationView.OnNavigationItemSelectedListener {
-
+class MainActivity : CoreDaggerActivity(), BottomNavigationView.OnNavigationItemSelectedListener {
 
     private val TAG:String? = MainActivity::class.java.simpleName
 
@@ -46,11 +42,7 @@ class MainActivity : CoreActivity(), BottomNavigationView.OnNavigationItemSelect
     }
 
     @Inject
-    lateinit var mPresenter: MainPresenter
-
-    @Inject
-    lateinit var mMainService: MainService
-
+    lateinit var mMainViewModel: MainViewModel
 
     var mDataBingding: ActivityMainBinding? = null
     private var mAdapter: CoreFragmentPagerAdapter? = null
@@ -60,19 +52,17 @@ class MainActivity : CoreActivity(), BottomNavigationView.OnNavigationItemSelect
         mDataBingding = bindingContentView(R.layout.activity_main)
         setUpNavigation()
         setUpViewPager()
-        initInjection()
 //        Toast.makeText(this, mPresenter.doSomething(), Toast.LENGTH_SHORT).show()
-        NSkyLog.d(TAG, "MainPresenter ${mPresenter.doSomething()}")
-        NSkyLog.d(TAG , "MainService ${mMainService.getMainInfo()}")
+        NSkyLog.d(TAG, "MainViewModel ${mMainViewModel.doSomething()}")
     }
 
     /*
     Dagger2注入注册
  */
-    private fun initInjection() {
-        DaggerMainComponent.builder().build().inject(this)
-
-    }
+//    private fun initInjection() {
+//        DaggerMainComponent.builder().build().inject(this)
+//
+//    }
     private fun setUpNavigation() {
 
         //            navigation.disableShiftMode()
@@ -129,7 +119,7 @@ class MainActivity : CoreActivity(), BottomNavigationView.OnNavigationItemSelect
         val fragmentList = ArrayList<Fragment>()
         var fragment: Fragment?
 
-        fragment = CatalogFragment()
+        fragment = HomeFragment()
         fragmentList.add(fragment)
 
         fragment = DiscoverFragment()

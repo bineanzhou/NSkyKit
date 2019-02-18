@@ -81,4 +81,8 @@
     <string name="bottom_nav_page_4_name">Page 4</string>
     <string name="bottom_nav_page_5_name">Page 5</string>
 
+    <string name="cat_toc_title">Material Components</string>
+    <string name="cat_toc_status_wip">WIP</string>
+
+    <string name="cat_bottomsheet_title">bottomsheet</string>
 </resources>
