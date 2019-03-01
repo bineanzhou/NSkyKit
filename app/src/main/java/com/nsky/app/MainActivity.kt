@@ -53,6 +53,9 @@ class MainActivity : CoreDaggerActivity(), BottomNavigationView.OnNavigationItem
     @Inject
     lateinit var mSharePref:SharedPreferences
 
+    @Inject
+    lateinit var application:NSkyApplication
+
     var mDataBingding: ActivityMainBinding? = null
     private var mAdapter: CoreFragmentPagerAdapter? = null
 
@@ -68,8 +71,10 @@ class MainActivity : CoreDaggerActivity(), BottomNavigationView.OnNavigationItem
 //        Toast.makeText(this, mPresenter.doSomething(), Toast.LENGTH_SHORT).show()
         NSkyLog.d(TAG, "MainViewModel ${mMainViewModel.doSomething()}")
         NSkyLog.d(TAG, "HomeViewModel ${mHomeViewModel.doSomething()}")
+        NSkyLog.d(TAG, "sharePref ${mSharePref.toString()}")
 
         mSharePref.edit().putString("abc", "werwe").apply()
+
     }
 
     /*

@@ -14,6 +14,7 @@ import dagger.android.ContributesAndroidInjector
 import javax.inject.Singleton
 import dagger.Provides
 import com.nsky.app.NSkyApplication
+import com.nsky.kit.utils.NSkyLog
 import com.orhanobut.logger.Logger
 
 
@@ -56,7 +57,9 @@ class AppModule {
     @Provides
     @Singleton
     fun provideSharedPreferences(application: NSkyApplication): SharedPreferences {
-        Logger.d("provideSharedPreferences")
-        return PreferenceManager.getDefaultSharedPreferences(application)
+
+        var sharePref = PreferenceManager.getDefaultSharedPreferences(application)
+        NSkyLog.d(AppModule::class.java.simpleName, "provideSharedPreferences ${sharePref.toString()}")
+        return sharePref;
     }
 }
