@@ -1,12 +1,15 @@
 package com.nsky.app
 
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.support.design.widget.BottomNavigationView
 import android.support.v4.app.Fragment
 import android.view.MenuItem
-import com.nsky.app.home.HomeFragment
+import android.widget.TextView
 import com.nsky.app.databinding.ActivityMainBinding
 import com.nsky.app.discover.DiscoverFragment
+import com.nsky.app.home.HomeFragment
+import com.nsky.app.home.viewmodel.HomeViewModel
 import com.nsky.app.setting.SettingFragment
 import com.nsky.app.viewmodel.MainViewModel
 import com.nsky.kit.dagger.scope.CoreDaggerActivity
@@ -44,16 +47,29 @@ class MainActivity : CoreDaggerActivity(), BottomNavigationView.OnNavigationItem
     @Inject
     lateinit var mMainViewModel: MainViewModel
 
+    @Inject
+    lateinit var mHomeViewModel: HomeViewModel
+
+    @Inject
+    lateinit var mSharePref:SharedPreferences
+
     var mDataBingding: ActivityMainBinding? = null
     private var mAdapter: CoreFragmentPagerAdapter? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+//        DaggerMainActivityComponent.builder().mainDaggerModule(MainActivityModule(this)).build().inject(this)
+
         mDataBingding = bindingContentView(R.layout.activity_main)
         setUpNavigation()
         setUpViewPager()
+
+
 //        Toast.makeText(this, mPresenter.doSomething(), Toast.LENGTH_SHORT).show()
         NSkyLog.d(TAG, "MainViewModel ${mMainViewModel.doSomething()}")
+        NSkyLog.d(TAG, "HomeViewModel ${mHomeViewModel.doSomething()}")
+
+        mSharePref.edit().putString("abc", "werwe").apply()
     }
 
     /*

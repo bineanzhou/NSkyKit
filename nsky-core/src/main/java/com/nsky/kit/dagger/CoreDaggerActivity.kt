@@ -25,6 +25,7 @@ abstract class CoreDaggerActivity : CoreActivity(), HasFragmentInjector, HasSupp
         super.onCreate(savedInstanceState)
     }
 
+
     override fun supportFragmentInjector(): AndroidInjector<Fragment>? {
         return supportFragmentInjector
     }

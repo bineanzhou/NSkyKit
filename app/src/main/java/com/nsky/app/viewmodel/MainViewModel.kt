@@ -12,5 +12,5 @@ class MainViewModel(application: Application) : CoreViewModel(application),IMain
     }
 }
 interface IMainViewModel{
-    open abstract fun doSomething(): String
+    abstract fun doSomething(): String
 }

@@ -77,8 +77,7 @@ fun <T : ViewDataBinding> AppCompatActivity.bindingContentView(@LayoutRes layout
     return dataBinding
 }
 
-
-fun <T : ViewModel> AppCompatActivity.obtainViewModel(viewModelClass: Class<T>) =
+fun <T : ViewModel> AppCompatActivity.getViewModel(viewModelClass: Class<T>) =
     ViewModelProviders.of(this).get(viewModelClass)
 
 /**
