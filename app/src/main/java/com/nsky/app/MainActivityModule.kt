@@ -32,15 +32,15 @@ open class MainActivityModule {
 
     @ActivityScope
     @Provides
-    fun provideHomeViewModel(): HomeViewModel {
-//        try {
-//            if (activity != null && activity is FragmentActivity) {
-//                return ViewModelProviders.of(activity).get(HomeViewModel::class.java)
-//            }
-//        } catch (e: Exception) {
-//            e.printStackTrace()
-//        }
-//        Logger.d("provideHomeViewModel activity:$activity")
+    fun provideHomeViewModel(activity: MainActivity?): HomeViewModel {
+        try {
+
+            activity?.apply {
+                return getViewModel(HomeViewModel::class.java)
+            }
+        } catch (e: Exception) {
+            e.printStackTrace()
+        }
         return HomeViewModel(AppManager.getApplication())
     }
 
