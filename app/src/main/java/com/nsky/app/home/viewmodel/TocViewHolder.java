@@ -11,6 +11,7 @@ import android.widget.TextView;
 import com.nsky.app.R;
 import com.nsky.app.home.FeatureDemoUtils;
 import com.nsky.app.home.model.FeatureDemo;
+import com.nsky.kit.arch.FragmentContainerActivity;
 
 /** Creates the UI for a single item in the catalog table of contents. */
 class TocViewHolder extends RecyclerView.ViewHolder {
@@ -49,7 +50,8 @@ class TocViewHolder extends RecyclerView.ViewHolder {
       new OnClickListener() {
         @Override
         public void onClick(View v) {
-          FeatureDemoUtils.startFragment(activity, featureDemo.createFragment(), FRAGMENT_CONTENT);
+//          FeatureDemoUtils.startFragment(activity, featureDemo.createFragment(), FRAGMENT_CONTENT);
+          FragmentContainerActivity.Companion.launch(activity, featureDemo.getFragmentClass());
         }
       };
 }

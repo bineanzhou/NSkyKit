@@ -71,4 +71,6 @@ public abstract class FeatureDemo {
   }
 
   public abstract Fragment createFragment();
+
+  public abstract Class<? extends Fragment> getFragmentClass();
 }
