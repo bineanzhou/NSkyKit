@@ -3,23 +3,18 @@ package com.nsky.app.dagger
 import android.content.Context
 import android.content.SharedPreferences
 import android.preference.PreferenceManager
-import android.support.v4.app.Fragment
 import com.nsky.app.MainActivity
 import com.nsky.app.MainActivityModule
 import com.nsky.app.NSkyApplication
-import com.nsky.app.R
 import com.nsky.app.discover.DiscoverFragment
 import com.nsky.app.home.ButtonsFragment
 import com.nsky.app.home.HomeFragment
-import com.nsky.app.home.model.FeatureDemo
 import com.nsky.app.setting.SettingFragment
 import com.nsky.kit.dagger.scope.ActivityScope
 import com.nsky.kit.utils.NSkyLog
 import dagger.Module
 import dagger.Provides
-import dagger.Subcomponent
 import dagger.android.ContributesAndroidInjector
-import dagger.multibindings.IntoSet
 import javax.inject.Singleton
 
 

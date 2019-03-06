@@ -9,8 +9,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.nsky.app.R;
-import com.nsky.app.home.FeatureDemoUtils;
-import com.nsky.app.home.model.FeatureDemo;
+import com.nsky.app.home.model.FeatureBlock;
 import com.nsky.kit.arch.FragmentContainerActivity;
 
 /** Creates the UI for a single item in the catalog table of contents. */
@@ -23,7 +22,7 @@ class TocViewHolder extends RecyclerView.ViewHolder {
   private final TextView statusWipLabelView;
 
   private FragmentActivity activity;
-  private FeatureDemo featureDemo;
+  private FeatureBlock featureBlock;
 
   TocViewHolder(FragmentActivity activity, ViewGroup viewGroup) {
     super(
@@ -35,23 +34,23 @@ class TocViewHolder extends RecyclerView.ViewHolder {
     statusWipLabelView = itemView.findViewById(R.id.cat_toc_status_wip_label);
   }
 
-  void bind(FragmentActivity activity, FeatureDemo featureDemo) {
+  void bind(FragmentActivity activity, FeatureBlock featureBlock) {
     this.activity = activity;
-    this.featureDemo = featureDemo;
+    this.featureBlock = featureBlock;
 
-    titleView.setText(featureDemo.getTitleResId());
-    imageView.setImageResource(featureDemo.getDrawableResId());
+    titleView.setText(featureBlock.getTitleResId());
+    imageView.setImageResource(featureBlock.getDrawableResId());
     itemView.setOnClickListener(clickListener);
     statusWipLabelView.setVisibility(
-        featureDemo.getStatus() == FeatureDemo.STATUS_WIP ? View.VISIBLE : View.GONE);
+        featureBlock.getStatus() == FeatureBlock.STATUS_WIP ? View.VISIBLE : View.GONE);
   }
 
   private final OnClickListener clickListener =
       new OnClickListener() {
         @Override
         public void onClick(View v) {
-//          FeatureDemoUtils.startFragment(activity, featureDemo.createFragment(), FRAGMENT_CONTENT);
-          FragmentContainerActivity.Companion.launch(activity, featureDemo.getFragmentClass());
+//          FeatureDemoUtils.startFragment(activity, featureBlock.createFragment(), FRAGMENT_CONTENT);
+          FragmentContainerActivity.Companion.launch(activity, featureBlock.getFragmentClass());
         }
       };
 }

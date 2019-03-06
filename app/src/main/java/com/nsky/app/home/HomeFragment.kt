@@ -11,14 +11,10 @@ import android.support.v7.widget.RecyclerView
 import android.view.View
 import com.nsky.app.R
 import com.nsky.app.databinding.HomeFragmentBinding
-import com.nsky.app.home.model.FeatureDemo
+import com.nsky.app.home.model.FeatureBlock
 import com.nsky.app.home.viewmodel.TocAdapter
 import com.nsky.kit.dagger.CoreDaggerFragment
-import com.nsky.kit.dagger.scope.ActivityScope
-import com.nsky.kit.dagger.scope.FragmentScope
-import dagger.Module
 import dagger.Provides
-import dagger.android.ContributesAndroidInjector
 import dagger.multibindings.IntoSet
 import java.text.Collator
 import javax.inject.Inject
@@ -32,7 +28,7 @@ class HomeFragment : CoreDaggerFragment<HomeFragmentBinding>() {
     private val GRID_SPAN_COUNT_MAX = 4
 
     @Inject
-    lateinit var featureDemos: Set<@JvmSuppressWildcards FeatureDemo>
+    lateinit var featureDemos: Set<@JvmSuppressWildcards FeatureBlock>
     @Inject
     lateinit var tocResourceProvider: TocResourceProvider
 
@@ -76,7 +72,7 @@ class HomeFragment : CoreDaggerFragment<HomeFragmentBinding>() {
                 )
             )
 
-            val featureList = ArrayList<FeatureDemo>(featureDemos)
+            val featureList = ArrayList<FeatureBlock>(featureDemos)
             // Sort features alphabetically
             val collator = Collator.getInstance()
             featureList.sortWith(Comparator { feature1, feature2 ->
@@ -116,8 +112,8 @@ class HomeFragment : CoreDaggerFragment<HomeFragmentBinding>() {
     class Module{
         @IntoSet
         @Provides
-        fun provideFeatureDemo(): FeatureDemo {
-            return object : FeatureDemo(R.string.cat_buttons_title, R.mipmap.ic_button) {
+        fun provideFeatureDemo(): FeatureBlock {
+            return object : FeatureBlock(R.string.cat_buttons_title, R.mipmap.ic_button) {
                 override fun getFragmentClass(): Class<out Fragment> {
                     return ButtonsFragment::class.java
                 }

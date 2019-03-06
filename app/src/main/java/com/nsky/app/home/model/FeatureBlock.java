@@ -26,7 +26,7 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 
 /** Represents a single feature to demo. */
-public abstract class FeatureDemo {
+public abstract class FeatureBlock {
 
   /** Status flag that denotes the demo and component are ready for use. */
   public static final int STATUS_READY = 0;
@@ -34,7 +34,7 @@ public abstract class FeatureDemo {
   /** Status flag that denotes the demo and/or component is work in progress. */
   public static final int STATUS_WIP = 1;
 
-  /** Status flag enum for this {@link FeatureDemo}. */
+  /** Status flag enum for this {@link FeatureBlock}. */
   @IntDef({STATUS_READY, STATUS_WIP})
   @Retention(RetentionPolicy.SOURCE)
   public @interface Status {}
@@ -45,11 +45,11 @@ public abstract class FeatureDemo {
   private final int drawableResId;
   @Status private final int status;
 
-  public FeatureDemo(@StringRes int titleResId, @DrawableRes int drawableResId) {
+  public FeatureBlock(@StringRes int titleResId, @DrawableRes int drawableResId) {
     this(titleResId, drawableResId, STATUS_READY);
   }
 
-  public FeatureDemo(
+  public FeatureBlock(
       @StringRes int titleResId, @DrawableRes int drawableResId, @Status int status) {
     this.titleResId = titleResId;
     this.drawableResId = drawableResId;

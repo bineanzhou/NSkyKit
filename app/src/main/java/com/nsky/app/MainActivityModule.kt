@@ -1,17 +1,14 @@
 package com.nsky.app
 
-import android.support.v4.app.Fragment
 import com.nsky.app.home.ButtonsFragment
 import com.nsky.app.home.HomeFragment
 import com.nsky.app.home.TocResourceProvider
-import com.nsky.app.home.model.FeatureDemo
 import com.nsky.app.home.viewmodel.HomeViewModel
 import com.nsky.app.viewmodel.MainViewModel
 import com.nsky.kit.dagger.scope.ActivityScope
 import com.nsky.kit.ext.getViewModel
 import com.nsky.kit.utils.AppManager
 import dagger.Provides
-import dagger.multibindings.IntoSet
 
 
 /**

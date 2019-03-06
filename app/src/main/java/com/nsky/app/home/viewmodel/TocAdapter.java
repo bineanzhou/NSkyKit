@@ -19,7 +19,7 @@ package com.nsky.app.home.viewmodel;
 import android.support.v4.app.FragmentActivity;
 import android.support.v7.widget.RecyclerView.Adapter;
 import android.view.ViewGroup;
-import com.nsky.app.home.model.FeatureDemo;
+import com.nsky.app.home.model.FeatureBlock;
 
 import java.util.List;
 
@@ -27,11 +27,11 @@ import java.util.List;
 public class TocAdapter extends Adapter<TocViewHolder> {
 
   private final FragmentActivity activity;
-  private final List<FeatureDemo> featureDemos;
+  private final List<FeatureBlock> featureBlocks;
 
-  public TocAdapter(FragmentActivity activity, List<FeatureDemo> featureDemos) {
+  public TocAdapter(FragmentActivity activity, List<FeatureBlock> featureBlocks) {
     this.activity = activity;
-    this.featureDemos = featureDemos;
+    this.featureBlocks = featureBlocks;
   }
 
   @Override
@@ -41,11 +41,11 @@ public class TocAdapter extends Adapter<TocViewHolder> {
 
   @Override
   public void onBindViewHolder(TocViewHolder tocViewHolder, int i) {
-    tocViewHolder.bind(activity, featureDemos.get(i));
+    tocViewHolder.bind(activity, featureBlocks.get(i));
   }
 
   @Override
   public int getItemCount() {
-    return featureDemos.size();
+    return featureBlocks.size();
   }
 }
