@@ -1,19 +1,27 @@
 package com.nsky.app
 
+import android.support.v4.app.Fragment
+import com.nsky.app.home.ButtonsFragment
+import com.nsky.app.home.HomeFragment
 import com.nsky.app.home.TocResourceProvider
+import com.nsky.app.home.model.FeatureDemo
 import com.nsky.app.home.viewmodel.HomeViewModel
 import com.nsky.app.viewmodel.MainViewModel
 import com.nsky.kit.dagger.scope.ActivityScope
 import com.nsky.kit.ext.getViewModel
 import com.nsky.kit.utils.AppManager
-import dagger.Module
 import dagger.Provides
+import dagger.multibindings.IntoSet
 
 
 /**
  * Created by zhoubin on 2019/1/31.
  **/
-@Module
+@dagger.Module(
+    includes = [
+        ButtonsFragment.Module::class,
+        HomeFragment.Module::class]
+)
 open class MainActivityModule {
 
     @ActivityScope
@@ -45,7 +53,7 @@ open class MainActivityModule {
     }
 
     @Provides
-    internal fun provideTocResourceProvider(): TocResourceProvider {
+    fun provideTocResourceProvider(): TocResourceProvider {
         return TocResourceProvider()
     }
 
