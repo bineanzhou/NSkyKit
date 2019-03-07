@@ -7,7 +7,7 @@ import com.nsky.app.MainActivity
 import com.nsky.app.MainActivityModule
 import com.nsky.app.NSkyApplication
 import com.nsky.app.discover.DiscoverFragment
-import com.nsky.app.home.ButtonsFragment
+import com.nsky.app.home.buttons.ButtonsFragment
 import com.nsky.app.home.HomeFragment
 import com.nsky.app.setting.SettingFragment
 import com.nsky.kit.dagger.scope.ActivityScope

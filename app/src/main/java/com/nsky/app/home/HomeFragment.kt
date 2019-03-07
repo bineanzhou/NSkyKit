@@ -2,7 +2,6 @@ package com.nsky.app.home
 
 import android.os.Build
 import android.support.design.widget.AppBarLayout
-import android.support.v4.app.Fragment
 import android.support.v4.content.ContextCompat
 import android.support.v4.math.MathUtils
 import android.support.v7.app.AppCompatActivity
@@ -14,8 +13,6 @@ import com.nsky.app.databinding.HomeFragmentBinding
 import com.nsky.app.home.model.FeatureBlock
 import com.nsky.app.home.viewmodel.TocAdapter
 import com.nsky.kit.dagger.CoreDaggerFragment
-import dagger.Provides
-import dagger.multibindings.IntoSet
 import java.text.Collator
 import javax.inject.Inject
 
@@ -106,23 +103,4 @@ class HomeFragment : CoreDaggerFragment<HomeFragmentBinding>() {
         val gridSpanCount = displayWidth / itemSize
         return MathUtils.clamp(gridSpanCount, GRID_SPAN_COUNT_MIN, GRID_SPAN_COUNT_MAX)
     }
-
-
-    @dagger.Module
-    class Module{
-        @IntoSet
-        @Provides
-        fun provideFeatureBlock(): FeatureBlock {
-            return object : FeatureBlock(R.string.cat_buttons_title, R.mipmap.ic_button) {
-                override fun getFragmentClass(): Class<out Fragment> {
-                    return ButtonsFragment::class.java
-                }
-
-                override fun createFragment(): Fragment {
-                    return ButtonsFragment()
-                }
-            }
-        }
-    }
-
 }

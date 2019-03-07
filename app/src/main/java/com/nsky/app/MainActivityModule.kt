@@ -1,7 +1,6 @@
 package com.nsky.app
 
-import com.nsky.app.home.ButtonsFragment
-import com.nsky.app.home.HomeFragment
+import com.nsky.app.home.buttons.ButtonsFragment
 import com.nsky.app.home.TocResourceProvider
 import com.nsky.app.home.viewmodel.HomeViewModel
 import com.nsky.app.viewmodel.MainViewModel
@@ -16,8 +15,7 @@ import dagger.Provides
  **/
 @dagger.Module(
     includes = [
-        ButtonsFragment.Module::class,
-        HomeFragment.Module::class]
+        ButtonsFragment.Module::class]
 )
 open class MainActivityModule {
 
