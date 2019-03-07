@@ -25,7 +25,6 @@ open class MainActivityModule {
     @Provides
     fun provideMainViewModel(activity: MainActivity?): MainViewModel {
         try {
-
             activity?.apply {
                 return getViewModel(MainViewModel::class.java)
             }

@@ -112,7 +112,7 @@ class HomeFragment : CoreDaggerFragment<HomeFragmentBinding>() {
     class Module{
         @IntoSet
         @Provides
-        fun provideFeatureDemo(): FeatureBlock {
+        fun provideFeatureBlock(): FeatureBlock {
             return object : FeatureBlock(R.string.cat_buttons_title, R.mipmap.ic_button) {
                 override fun getFragmentClass(): Class<out Fragment> {
                     return ButtonsFragment::class.java

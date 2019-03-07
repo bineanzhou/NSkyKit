@@ -49,7 +49,7 @@ class TocViewHolder extends RecyclerView.ViewHolder {
       new OnClickListener() {
         @Override
         public void onClick(View v) {
-//          FeatureDemoUtils.startFragment(activity, featureBlock.createFragment(), FRAGMENT_CONTENT);
+//          FeatureBlockUtils.startFragment(activity, featureBlock.createFragment(), FRAGMENT_CONTENT);
           FragmentContainerActivity.Companion.launch(activity, featureBlock.getFragmentClass());
         }
       };
